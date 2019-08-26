@@ -18,8 +18,7 @@ podTemplate(
         }
         stage ('Build') {
             container ('golang') {
-                //sh 'CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .'
-                sh 'python --version'
+                sh 'CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .'
             }
         }
     }

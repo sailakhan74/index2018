@@ -7,6 +7,18 @@ podTemplate(
             image: 'golang:1.10-alpine',
             ttyEnabled: true,
             command: 'cat'
+        ),
+        containerTemplate(
+            name: 'docker', 
+            image: 'docker:18.02',
+            ttyEnabled: true,
+            command: 'cat'
+        )
+    ],
+    volumes: [
+        hostPathVolume(
+            hostPath: '/var/run/docker.sock',
+            mountPath: '/var/run/docker.sock'
         )
     ]
 ) {

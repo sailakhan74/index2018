@@ -22,7 +22,7 @@ podTemplate(
         )
     ]
 ) {
-    node('mypod') {
+    node('grafana') {
         def commitId
         stage ('Extract') {
             checkout scm

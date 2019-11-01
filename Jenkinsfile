@@ -1,5 +1,5 @@
 podTemplate(
-    label: 'mypod', 
+    label: 'abc', 
     inheritFrom: 'default',
     containers: [
         containerTemplate(
@@ -22,7 +22,7 @@ podTemplate(
         )
     ]
 ) {
-    node('mypod') {
+    node('abc') {
         def commitId
         stage ('Extract') {
             checkout scm

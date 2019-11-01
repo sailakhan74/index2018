@@ -31,7 +31,7 @@ podTemplate(
         stage ('Deploy') {
             container ('helm') {
                 sh "/helm init --client-only --skip-refresh"
-                sh "/helm upgrade --install --wait mongodb mongodb"
+                sh "/helm upgrade --install --wait grafana grafana"
             }
         }
     }

@@ -1,5 +1,5 @@
 podTemplate(
-    label: 'mypod', 
+    label: 'grafana', 
     inheritFrom: 'default',
     containers: [
         containerTemplate(

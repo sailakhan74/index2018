@@ -1,5 +1,5 @@
 podTemplate(
-    label: 'grafana', 
+    label: 'mypod', 
     inheritFrom: 'default',
     containers: [
         containerTemplate(
@@ -22,7 +22,7 @@ podTemplate(
         )
     ]
 ) {
-    node('grafana') {
+    node('mypod') {
         def commitId
         stage ('Extract') {
             checkout scm

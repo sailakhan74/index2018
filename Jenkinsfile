@@ -37,7 +37,7 @@ podTemplate(
             container ('helm') {
                 sh "/helm init --client-only --skip-refresh"
                 sh "/helm ls"
-                sh "/helm upgrade --install --wait grafana grafana --namespace grafana"
+                sh "/helm upgrade --install my-grafana grafana --namespace grafana"
             }
         }
     }

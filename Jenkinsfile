@@ -13,8 +13,13 @@ podTemplate(
             image: 'ibmcom/k8s-helm:v2.6.0',
             ttyEnabled: true,
             command: 'cat'
+        ), containerTemplate(
+               name: 'kubectl', 
+               image: 'lachlanevenson/k8s-kubectl:v1.6.6', 
+               ttyEnabled: true, 
+               command: 'cat'
         )
-    ],
+    ], 
     volumes: [
         hostPathVolume(
             hostPath: '/var/run/docker.sock',

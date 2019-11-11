@@ -36,7 +36,8 @@ podTemplate(
         stage ('Deploy') {
             container ('helm') {
                 sh "/helm init --client-only --skip-refresh"
-                sh "/helm upgrade --install --wait grafana grafana"
+                sh "/helm ls"
+                sh "/helm upgrade --install --wait grafana grafana --namespace grafana"
             }
         }
     }

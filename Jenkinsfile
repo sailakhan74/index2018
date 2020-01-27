@@ -1,5 +1,5 @@
 podTemplate(
-    label: 'abc', 
+    label: 'mypod', 
     inheritFrom: 'default',
     containers: [
         containerTemplate(
@@ -10,16 +10,11 @@ podTemplate(
         ),
         containerTemplate(
             name: 'helm', 
-            image: 'ibmcom/k8s-helm:v2.6.0',
+            image: 'exozet/helm:3.0.2',
             ttyEnabled: true,
             command: 'cat'
-        ), containerTemplate(
-               name: 'kubectl', 
-               image: 'lachlanevenson/k8s-kubectl:v1.6.6', 
-               ttyEnabled: true, 
-               command: 'cat'
         )
-    ], 
+    ],
     volumes: [
         hostPathVolume(
             hostPath: '/var/run/docker.sock',
@@ -27,7 +22,7 @@ podTemplate(
         )
     ]
 ) {
-    node('abc') {
+    node('mypod') {
         def commitId
         stage ('Extract') {
             checkout scm
@@ -35,10 +30,11 @@ podTemplate(
         }
         stage ('Deploy') {
             container ('helm') {
-                //sh "helm init --upgrade --client-only --skip-refresh"
                 sh "helm ls"
                 sh "helm upgrade --install my-grafana grafana"
                 sh "helm ls"
+                // sh "helm init"
+                //sh "helm upgrade --install --wait --set image.repository=${repository},image.tag=${commitId} hello hello"
             }
         }
     }
